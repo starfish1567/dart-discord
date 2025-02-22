@@ -1,0 +1,12 @@
+services:
+  - name: dart-discord-bot
+    type: web
+    env: docker
+    plan: free
+    repo: https://github.com/your-username/your-repo
+    branch: main
+    buildCommand: dart pub get
+    startCommand: dart run
+    envVars:
+      - key: TOKEN
+        sync: false  # You'll add this manually in Render's dashboard
