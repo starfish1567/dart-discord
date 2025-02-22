@@ -1,7 +1,7 @@
 import 'package:nyxx/nyxx.dart';
 
 void main() async{
-  String token = const String.fromEnvironment('TOKEN', defaultValue: '');
+  String token = Platform.environment['TOKEN'] ?? '';
 
   final client = await Nyxx.connectGateway(
     token, 
