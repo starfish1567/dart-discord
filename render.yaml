@@ -1,12 +1,13 @@
 services:
   - name: dart-discord-bot
-    type: web
+    type: worker  # Use "worker" instead of "web" for bots
     env: docker
     plan: free
-    repo: https://github.com/your-username/your-repo
+    repo: https://github.com/vikkybliz/dart-discord
     branch: main
     buildCommand: dart pub get
-    startCommand: dart run
+    startCommand: ./start.sh
     envVars:
       - key: TOKEN
         sync: false  # You'll add this manually in Render's dashboard
+
