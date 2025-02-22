@@ -10,6 +10,7 @@ void main() async{
     );
 
     final bot = await client.users.fetchCurrentUser();
+    print("✅ Bot is online");
 
     client.onMessageCreate.listen((event) async{
       if(event.mentions.contains(bot)) {
@@ -19,4 +20,15 @@ void main() async{
         ));
       }
     });
+
+   // Fake Web Server to Keep Render Alive
+  var port = int.tryParse(Platform.environment['PORT'] ?? '8080') ?? 8080;
+  var server = await HttpServer.bind(InternetAddress.anyIPv4, port);
+  print("🌍 Fake server running on port $port");
+  await for (var request in server) {
+    request.response
+      ..write("Bot is running!")
+      ..close();
+  }
+}
 }
